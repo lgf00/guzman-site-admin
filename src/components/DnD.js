@@ -77,15 +77,16 @@ class DnD extends Component {
 
 class AlbumDisplay extends PureComponent {
     render() {
-        //let album = this.props.album;
-        // if (album.length > 4) {
-        //     album = album.slice(0, 5);
-        // }
         return(
             this.props.album.map(file => {
-                return (
-                    <div className="image" style={{ backgroundImage: 'url(' + URL.createObjectURL(file) + ')' }} key={file.name}>
-                    </div>
+                if (typeof(file) === "object") {
+                    return (
+                        <div className="image" style={{ backgroundImage: 'url(' + URL.createObjectURL(file) + ')' }} key={file.name}>
+                        </div>
+                    );
+                }
+                return(
+                    <div className="image" style={{ backgroundImage: 'url(' + file + ')' }} key={file.length}/>
                 );
             })
         );

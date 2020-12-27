@@ -82,8 +82,13 @@ class DisplayFiles extends PureComponent {
         return (
             <div className="preview">
                 {this.props.images.map((file) => {
+                    if (typeof(file) === "object") {
+                        return (
+                            <div onClick={(e) => this.handleDelete(e, file.name)} className="image delete" style={{ backgroundImage: 'url(' + URL.createObjectURL(file) + ')' }} key={file.size}/>
+                        ); 
+                    }
                     return (
-                        <div onClick={(e) => this.handleDelete(e, file.name)} className="image delete" style={{ backgroundImage: 'url(' + URL.createObjectURL(file) + ')' }} key={file.size}/>
+                        <div onClick={(e) => this.handleDelete(e, file.name)} className="image delete" style={{ backgroundImage: 'url(' + file + ')' }} key={file.size}/>
                     );
                 })}
             </div>
