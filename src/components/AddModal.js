@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddForm extends Component {
+class AddModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +14,6 @@ class AddForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const albums = this.props.albums;
-        console.log("onsubmit", this.state.images);
         const newAlbum = {
             name: this.state.name,
             images: this.state.images,
@@ -28,7 +27,6 @@ class AddForm extends Component {
         this.setState({duplicateFound: false});
         const files = Array.from(e.target.files);
         let newImages = this.state.images;
-        console.log("newimages", newImages);
         files.forEach(file => {
             let duplicate = false;
             newImages.forEach(image => {
@@ -36,9 +34,7 @@ class AddForm extends Component {
             })
             duplicate ? this.setState({duplicateFound: true}) : newImages.push(file);
         })
-        if (files) {
-            this.setState({images: newImages, noPreview: false});
-        }
+        this.setState({images: newImages, noPreview: false});
     }
 
     handleName = (e) => {
@@ -49,6 +45,7 @@ class AddForm extends Component {
         return(
             <div className="modal">
                 <div className="modal-content">
+                    <p> Add New Album </p>
                     <form onSubmit={(e) => this.handleSubmit(e)}>
                         <input type="text" placeholder={this.state.name} onChange={(e) => this.handleName(e)}/>
                         <br/>
@@ -88,4 +85,4 @@ class DisplayFiles extends Component {
     }
 }
 
-export default AddForm;
+export default AddModal;

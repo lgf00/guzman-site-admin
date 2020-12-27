@@ -1,10 +1,20 @@
-.content {
-  background-color: #282c34;
+.container {
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  color: white;
+}
+
+.controls {
+  margin: 30px auto;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -16,14 +26,25 @@
 
 .albums li {
   display: flex;
-  flex: row;
-  width: 40vw;
+  flex-direction: row;
+  width: 60vw;
   align-items: center;
-  border: 1px solid rgb(158, 158, 158);
   border-radius: .2em;
   margin-bottom: 1em;
   padding: .5em;
-  background-color: #282c34;
+}
+
+.li-col1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.li-col2 {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
 }
 
 .albums p {
@@ -34,23 +55,35 @@
 
 .images {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  flex: 1;
 }
 
 .image {
   height: 60px;
   width: 60px;
   border: 1px solid white;
-  margin-left: .5em;
+  margin-right: .5em;
+  margin-top: .5em;
   border-radius: .2em;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
+.delete:hover {
+  filter: grayscale(100%) 
+  brightness(40%) 
+  sepia(100%) 
+  hue-rotate(-50deg) 
+  saturate(600%) 
+  contrast(0.8);
+  cursor: pointer;
+}
+
 .modal {
-  position: fixed;
+  position: absolute;
   z-index: 1;
   left: 0;
   right: 0;
@@ -66,13 +99,23 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: .2em;
-  width: 50vw;
+  width: 40vw;
+}
+
+.edit-modal .modal-content {
+  margin: 5% auto;
+}
+
+.modal-content p {
+  color: black;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
 }
 
 .preview {
   display: flex;
   justify-content: flex-start;
-  color: black;
   flex-wrap: wrap;
   margin-top: 20px;
 }
@@ -85,3 +128,4 @@
   margin-top: 20px;
   padding: 15px 0;
 }
+
