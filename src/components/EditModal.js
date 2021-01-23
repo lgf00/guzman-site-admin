@@ -21,7 +21,8 @@ class EditModal extends Component {
         albums[index] = {
             name: this.state.newName,
             images: this.state.newImages,
-        }       
+            oldName: this.prevName,
+        }
         this.props.updateAlbums(albums);
         this.props.showEditModal(false);
     }
@@ -88,7 +89,7 @@ class DisplayFiles extends PureComponent {
                         ); 
                     }
                     return (
-                        <div onClick={(e) => this.handleDelete(e, file.name)} className="image delete" style={{ backgroundImage: 'url(' + file + ')' }} key={file.size}/>
+                        <div onClick={(e) => this.handleDelete(e, file.name)} className="image delete" style={{ backgroundImage: 'url(' + file + ')' }} key={file}/>
                     );
                 })}
             </div>

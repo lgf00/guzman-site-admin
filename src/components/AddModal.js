@@ -17,6 +17,7 @@ class AddModal extends Component {
         const newAlbum = {
             name: this.state.name,
             images: this.state.images,
+            oldName: "new",
         }
         albums.push(newAlbum);
         this.props.updateAlbums(albums);
